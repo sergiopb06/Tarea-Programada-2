@@ -8,15 +8,16 @@
 
 class Mensaje {
     private:
-        Nodo<Palabra>* cabeza;
+        char* frase;          
+        Nodo<char*>* cabeza;
 
     public:
-        Mensaje();
+        Mensaje(const char* f);
         ~Mensaje();
 
-        void agregarPalabra(const Palabra& p);
-        Palabra* buscar(const char* p);
-        Nodo<Palabra>* getCabeza() const;
+        void separadorPalabras();
+        char* getFrase() const;
+        Nodo<char*>* getCabeza() const;
 };
 
 #endif //MENSAJE_HPP
