@@ -128,4 +128,10 @@ int Analizador::analizarFrase(Mensaje& m) {
     return puntaje;
 }
 
+const char* Analizador::calcularSentimiento(int puntaje) const {
+    if (puntaje > 0) return "POSITIVO";
+    if (puntaje < 0) return "NEGATIVO";
+    return "NEUTRO";
+}
+
 

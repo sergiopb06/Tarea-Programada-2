@@ -24,7 +24,7 @@ public:
 
     int analizarFrase (Mensaje& m);
 
-    const char* calcularSentimiento(int puntaje);
+    const char* calcularSentimiento(int puntaje) const;
 };
 
 #endif // ANALIZADOR_HPP
