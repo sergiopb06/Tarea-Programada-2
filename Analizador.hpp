@@ -19,6 +19,12 @@ public:
 
     
     void cargarPalabras(const char* nombreArchivo);
+
+    Palabra* buscarEnVocabulario (const char* texto) const;
+
+    int analizarFrase (Mensaje& m);
+
+    const char* calcularSentimiento(int puntaje);
 };
 
 #endif // ANALIZADOR_HPP

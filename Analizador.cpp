@@ -88,3 +88,15 @@ void Analizador::cargarPalabras(const char* nombreArchivo) {
 
 }
 
+Palabra* Analizador::buscarEnVocabulario (const char* texto) const {
+    Nodo<Palabra>* actual = vocabulario;
+    while (actual) {
+        if (Palabra::comparar(actual->dato.getPalabra(), texto)) {
+            return &(actual->dato);
+        }
+        actual = actual->siguiente;
+    }
+    return nullptr;
+}
+
+
