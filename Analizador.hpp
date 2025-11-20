@@ -25,6 +25,8 @@ public:
     int analizarFrase (Mensaje& m);
 
     const char* calcularSentimiento(int puntaje) const;
+
+    int leerMensajes(const char* nombreArchivo, char frases[][200], int maxFrases);
 };
 
 #endif // ANALIZADOR_HPP

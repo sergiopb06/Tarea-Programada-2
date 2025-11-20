@@ -17,7 +17,7 @@ Analizador::~Analizador() {
 
 void Analizador::cargarPalabras(const char* nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
-    std::cout << "Cargando archivo..." << std::endl;
+    std::cout << "\nCargando archivo..." << std::endl;
 
     if (!archivo.is_open()) {
         std::cout << "ERROR\nNo se puede abrir el archivo..." << std::endl;
@@ -73,7 +73,7 @@ void Analizador::cargarPalabras(const char* nombreArchivo) {
         categoria[lengthCategoria] = '\0';
 
 
-        //Se crea la palabra.
+        //Se crea la palabra
         Palabra p(palabra, categoria);
 
         delete[] palabra;
@@ -133,5 +133,49 @@ const char* Analizador::calcularSentimiento(int puntaje) const {
     if (puntaje < 0) return "NEGATIVO";
     return "NEUTRO";
 }
+
+
+int Analizador::leerMensajes(const char* nombreArchivo, char frases[][200], int maxFrases) { // se pide un arreglo y un maxFrases
+                                                                                            
+    std::ifstream archivo(nombreArchivo);                                            // para poder almacenar las frases en el arreglo correctamente
+    if (!archivo.is_open()) {                                                     // cada frase tiene maximo 200 caracteres y el arreglo sera de maximo 20 frases
+        std::cout << "ERROR: no se puede abrir mensajes.txt...\n";
+        return 0;
+    }
+
+    char fraseTemp[200];
+    int indice = 0;
+    int total = 0;
+
+    char c;
+    while (archivo.get(c)) {
+
+        if (c == '.') {         //fin de frase
+            fraseTemp[indice] = '\0';
+
+            if (indice > 0 && total < maxFrases) {
+                int k = 0;
+                while (fraseTemp[k] != '\0' && k < 199) {    // copiamos manualmente
+                    frases[total][k] = fraseTemp[k];
+                    k++;
+                }
+                frases[total][k] = '\0';
+
+                total++;
+            }
+
+            indice = 0; // reiniciamos fraseTemp
+        }
+        else {
+            if (indice < 199) {
+                fraseTemp[indice++] = c;
+            }
+        }
+    }
+
+    archivo.close();
+    return total;
+}
+
 
 
