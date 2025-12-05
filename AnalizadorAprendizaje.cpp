@@ -251,7 +251,7 @@ void AnalizadorAprendizaje::guardarPalabras(const char* nombreArchivo) {
     while (actual) {
         Palabra* p = actual->dato;
         if (p) {
-            archivo << p->getPalabra() << "," << p->getCategoria() << "\n";
+            archivo << "\n" << p->getPalabra() << "," << p->getCategoria();
         }
         actual = actual->siguiente;
     }

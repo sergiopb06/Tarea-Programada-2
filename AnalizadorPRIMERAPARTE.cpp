@@ -1,5 +1,5 @@
 
-#include "Analizador.hpp"
+#include "AnalizadorPRIMERAPARTE.hpp"
 #include <fstream>
 #include <cctype>
 #include <iostream>
