@@ -15,3 +15,9 @@ g++ *.cpp -o main
 veremos cambios en el puntaje y evaluacion de las oraciones.
 
 En el apartado del main, veremos los casos de prueba de las palabras nuevas y sus resultados esperados en contraste de los obtenidos, ahí también observaremos los casos fallidos y los posiblemente fallidos o acertados.
+
+Links del Jira y GITHUB:
+
+https://github.com/sergiopb06/Tarea-Programada-2
+
+https://tareaprogramada2.atlassian.net/jira/software/projects/SCRUM/summary
