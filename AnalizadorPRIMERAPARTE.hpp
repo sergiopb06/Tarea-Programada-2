@@ -1,8 +1,9 @@
 #ifndef ANALIZADOR_HPP
 #define ANALIZADOR_HPP
-#include "Nodo.hpp"
+
 #include "Palabra.hpp"
 #include "Mensaje.hpp"
+#include "Lista.hpp"
 
 //ANALIZA LA FRASE CON AYUDA DE MENSAJE Y PALABRA
 //AYUDA A DEFINIR LAS PALABRAS
@@ -11,7 +12,7 @@
 
 class Analizador {
 private:
-    Nodo<Palabra>* vocabulario; 
+    Lista<Palabra> vocabulario; 
 
 public:
     Analizador();

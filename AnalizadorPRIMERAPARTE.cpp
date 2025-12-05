@@ -4,16 +4,8 @@
 #include <cctype>
 #include <iostream>
 
-Analizador::Analizador() : vocabulario(nullptr) {}
-
-Analizador::~Analizador() {
-    Nodo<Palabra>* actual = vocabulario;
-    while (actual) {
-        Nodo<Palabra>* temp = actual;
-        actual = actual->siguiente;
-        delete temp;
-    }
-}
+Analizador::Analizador(){}
+Analizador::~Analizador() {}
 
 void Analizador::cargarPalabras(const char* nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
@@ -79,9 +71,7 @@ void Analizador::cargarPalabras(const char* nombreArchivo) {
         delete[] palabra;
         delete[] categoria;
 
-        Nodo<Palabra>* nuevo = new Nodo<Palabra>(p);
-        nuevo->siguiente = vocabulario;
-        vocabulario = nuevo;
+        vocabulario.agregarInicio(p);
     }
 
     archivo.close();
@@ -89,7 +79,7 @@ void Analizador::cargarPalabras(const char* nombreArchivo) {
 }
 
 Palabra* Analizador::buscarEnVocabulario (const char* texto) const {
-    Nodo<Palabra>* actual = vocabulario;
+    Nodo<Palabra>* actual = vocabulario.getCabeza();
     while (actual) {
         if (Palabra::comparar(actual->dato.getPalabra(), texto)) {
             return &(actual->dato);

@@ -1,7 +1,7 @@
 #include "Mensaje.hpp"
 #include <cctype>
 
-Mensaje::Mensaje(const char* f) : cabeza(nullptr) {
+Mensaje::Mensaje(const char* f){
     int length = 0;
 
     while(f[length] != '\0') {
@@ -17,7 +17,7 @@ Mensaje::Mensaje(const char* f) : cabeza(nullptr) {
 }
 
 Mensaje::~Mensaje() {
-    Nodo<char*>* actual = cabeza;
+    Nodo<char*>* actual = palabras.getCabeza();
     while (actual) {
         Nodo<char*>* temp = actual;
         actual = actual->siguiente;
@@ -57,9 +57,7 @@ void Mensaje::separadorPalabras() {
 
 
         //Agrega la palabra a la lista de palabras encontradas
-        Nodo<char*>* nodo = new Nodo<char*>(palabra);
-        nodo->siguiente = cabeza;
-        cabeza = nodo;
+        palabras.agregarInicio(palabra);
 
        //Avanza hasta la siguiente palabra valida
         caracter = primero + length;
@@ -70,7 +68,7 @@ void Mensaje::separadorPalabras() {
 }
 
 Nodo<char*>* Mensaje::getCabeza() const {
-    return cabeza;
+    return palabras.getCabeza();
 }
 
 char* Mensaje::getFrase() const {
